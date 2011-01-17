@@ -7,10 +7,6 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.0.0)
-    daemon_controller (0.2.5)
-    fastthread (1.0.7)
-    file-tail (1.0.5)
-      spruz (>= 0.1.0)
     highline (1.6.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -19,18 +15,10 @@ GEM
     net-ssh (2.0.24)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
-    passenger (3.0.2)
-      daemon_controller (>= 0.2.5)
-      fastthread (>= 1.0.1)
-      file-tail
-      rack
-      rake (>= 0.8.1)
     rack (1.2.1)
-    rake (0.8.7)
     sinatra (1.1.2)
       rack (~> 1.1)
       tilt (~> 1.2)
-    spruz (0.2.2)
     tilt (1.2.1)
 
 PLATFORMS
@@ -38,5 +26,4 @@ PLATFORMS
 
 DEPENDENCIES
   capistrano
-  passenger
   sinatra
