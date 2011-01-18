@@ -1,0 +1,78 @@
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,form,fieldset,p{margin:0; padding:0; font-weight:normal;}
+img,fieldset{border:none; padding:0; margin:0;}
+ul,li {list-style:none;}
+body{font:13px Arial, Helvetica,serif; color:#333333; background-color:#F1F5F7; }
+span.clear{clear:both;}
+div.left{float:left; width:auto;}
+div.right{float:right; width:auto;}
+a{text-decoration:none;}
+a:focus{outline:none;}
+ul:focus {outline:none;}
+input:focus{outline:none}
+
+div#outer_layout{margin:0 auto; width:100%; overflow:hidden;}
+div#layout {width:1080px; margin:0 auto;}
+
+
+/*Fixed to screen*/
+span.line {float:left; width:100%; height:3px; background-color:#333333;}
+a#left_arrow {position:fixed; top:50%; left:20px; width:15px; height:12px; }
+a#right_arrow {position:fixed; top:50%; right:20px; width:15px; height:12px; background:url('/images/nav/right_arrow.png') no-repeat 0 0;}
+
+div#content {position:fixed; top:40%; width:980px; height:100%;}
+
+h1 {float:left; width:100%; height:143px; font:normal 41px "PT Sans"; line-height:42px; letter-spacing:-1.0px; margin:0; color:#333333;}
+h1 span {font-weight:bold;}
+h2 {float:left; width:100%; height:143px; font:normal 21px "PT Sans"; line-height:42px; letter-spacing:-1.0px; margin:30px 0 0 0; color:#333333;}
+h2 a {color:#0099CC; text-decoration:underline;}
+h2 a:hover {color:#006080; cursor:pointer;}
+h5.title {display:none;}
+
+/* Most common stuff you'll need to change */
+
+	.coda-slider-wrapper { padding: 20px 0 }
+	.coda-slider { }
+	
+	/* Use this to keep the slider content contained in a box even when JavaScript is disabled */
+	.coda-slider-no-js .coda-slider { height: 100%; overflow: auto !important; padding-right: 20px }
+	
+	/* Change the width of the entire slider (without dynamic arrows) */
+	.coda-slider, .coda-slider .panel { width: 100%;} 
+	
+	/* Change margin and width of the slider (with dynamic arrows) */
+	.coda-slider-wrapper.arrows .coda-slider { width: 100%;}
+	
+	.coda-slider-wrapper.arrows .coda-slider .panel { width: 100%; }
+	.coda-slider-wrapper.arrows .coda-slider { margin: 0 10px }
+	
+	
+	
+	/* Panel padding */
+	.coda-slider .panel-wrapper { padding: 20px; width:1080px; margin:0 auto;}
+	
+	/* Preloader */
+	.coda-slider p.loading { padding: 20px; text-align: center }
+
+/* Don't change anything below here unless you know what you're doing */
+
+	/* Tabbed nav */
+	.coda-nav {width:1080px;}
+	/* Tab nav */
+	.coda-nav ul { width:200px; float:right;}
+	.coda-nav ul li a.current { color:#333333; }
+	.coda-nav ul li { display: inline; }
+	.coda-nav ul li a { color: #999999; font:normal 13px "PT Sans"; text-transform:uppercase; display: block; float: left; margin-right: 10px; padding: 3px 6px; text-decoration: none; letter-spacing:-1.0px;}
+	
+	/* Miscellaneous */
+	.coda-slider-wrapper { clear: both; overflow: hidden; width:100%; height:auto!important;}
+	.coda-slider { float: left; overflow: hidden; position: relative; height:100%; }
+	.coda-slider .panel { display: block; float: left }
+	.coda-slider .panel-container { position: relative }
+	
+	.coda-nav-left {position:fixed; top:50%; left:20px; width:15px; height:12px; }
+  .coda-nav-right {position:fixed; top:50%; right:20px; width:15px; height:12px; }
+  .coda-nav-left a {float:left; background:url('/images/nav/left_arrow.png') no-repeat 0 0; width:15px; height:12px;}
+  .coda-nav-right a {float:left; background:url('/images/nav/right_arrow.png') no-repeat 0 0; width:15px; height:12px;}
+
+  
+/*  .coda-nav-left a, .coda-nav-right a { display: block; text-align: center; text-decoration: none }*/
