@@ -119,15 +119,19 @@ $.fn.codaSlider = function(settings) {
 				offset = - (panelWidth*(panelCount - 1));
 				alterPanelHeight(panelCount - 1);
 				currentPanel = panelCount;
-				slider.siblings('.coda-nav').find('a.current').removeClass('current').parents('ul').find('li:last a').addClass('current');
+            $('ul#menu').find('a.current').removeClass('current');
+            $('ul#menu').find('a#'+	currentPanel).addClass('current');
+            // slider.siblings('.coda-nav').find('a.current').removeClass('current').parents('ul').find('li:last a').addClass('current');
 			} else {
 				currentPanel -= 1;
 				alterPanelHeight(currentPanel - 1);
 				offset = - (panelWidth*(currentPanel - 1));
-				slider.siblings('.coda-nav').find('a.current').removeClass('current').parent().prev().find('a').addClass('current');
+            $('ul#menu').find('a.current').removeClass('current');
+            $('ul#menu').find('a#'+	currentPanel).addClass('current');            				
+            // slider.siblings('.coda-nav').find('a.current').removeClass('current').parent().prev().find('a').addClass('current');
 			};
 			$('.panel-container', slider).animate({ marginLeft: offset }, settings.slideEaseDuration, settings.slideEaseFunction);
-			if (settings.crossLinking) { location.hash = currentPanel }; // Change the URL hash (cross-linking)
+			if (settings.crossLinking) { location.hash = returnSlideName (currentPanel, $('ul#menu')) }; // Change the URL hash (cross-linking)
 			return false;
 		});
 			
@@ -138,15 +142,19 @@ $.fn.codaSlider = function(settings) {
 				offset = 0;
 				currentPanel = 1;
 				alterPanelHeight(0);
-				slider.siblings('.coda-nav').find('a.current').removeClass('current').parents('ul').find('a:eq(0)').addClass('current');
+            $('ul#menu').find('a.current').removeClass('current');
+            $('ul#menu').find('a#'+	currentPanel).addClass('current');            				
+            // slider.siblings('.coda-nav').find('a.current').removeClass('current').parents('ul').find('a:eq(0)').addClass('current');
 			} else {
 				offset = - (panelWidth*currentPanel);
 				alterPanelHeight(currentPanel);
 				currentPanel += 1;
-				slider.siblings('.coda-nav').find('a.current').removeClass('current').parent().next().find('a').addClass('current');
+            $('ul#menu').find('a.current').removeClass('current');
+            $('ul#menu').find('a#'+	currentPanel).addClass('current');            				
+            // slider.siblings('.coda-nav').find('a.current').removeClass('current').parent().next().find('a').addClass('current');
 			};
 			$('.panel-container', slider).animate({ marginLeft: offset }, settings.slideEaseDuration, settings.slideEaseFunction);
-			if (settings.crossLinking) { location.hash = currentPanel }; // Change the URL hash (cross-linking)
+			if (settings.crossLinking) { location.hash = returnSlideName (currentPanel, $('ul#menu')) }; // Change the URL hash (cross-linking)
 			return false;
 		});
 			
@@ -245,5 +253,11 @@ $.fn.codaSlider = function(settings) {
 	// TO get the id value from hash location
 	function returnSlideID (location, element) {
 	   return element.children('li').find("a."+location).attr('id');
+	}
+	
+	// Rreturn slide's name by id
+	function returnSlideName (id, element) {
+	   var href = element.children('li').find("a#"+id).attr('href').replace("#", "");
+	   return href;
 	}
 };
