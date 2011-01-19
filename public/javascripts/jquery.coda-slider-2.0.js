@@ -31,7 +31,7 @@ $.fn.codaSlider = function(settings) {
 		dynamicTabsPosition: "top",
 		externalTriggerSelector: "a.xtrig",
 		firstPanelToLoad: 1,
-		panelTitleSelector: "h2.title",
+		panelTitleSelector: "h5.title",
 		slideEaseDuration: 1000,
 		slideEaseFunction: "easeInOutExpo"
 	}, settings);
@@ -60,10 +60,46 @@ $.fn.codaSlider = function(settings) {
 		// Specify the width of the container div (wide enough for all panels to be lined up end-to-end)
 		$(".panel-container", slider).css({ width: panelContainerWidth });
 		
+		
+		
+		
+		// If we need a dynamic menu
+		if (settings.dynamicTabs) {
+			var dynamicTabs = '<div class="coda-nav" id="coda-nav-' + sliderCount + '"><ul id="menu"></ul></div>';
+			switch (settings.dynamicTabsPosition) {
+				case "bottom":
+					slider.parent().append(dynamicTabs);
+					break;
+				default:
+					$('div#layout').append(dynamicTabs);
+					break;
+			};
+			ul = $('#coda-nav-' + sliderCount + ' ul');
+			// Create the nav items
+			$('.panel', slider).each(function(n) {
+            // ul.append('<li class="tab' + (n+1) + '"><a href="#' + (n+1) + '">' + $(this).find(settings.panelTitleSelector).text() + '</a></li>');                                   
+            ul.append('<li class="tab' + (n+1) + '"><a id="'+ (n+1) +'" class="'+ $(this).find(settings.panelTitleSelector).text().toLowerCase().replace(" ", "_") +'" href="#' + $(this).find(settings.panelTitleSelector).text().toLowerCase().replace(" ", "_")  + '">' + $(this).find(settings.panelTitleSelector).text() + '</a></li>');                                              
+			});
+         // navContainerWidth = slider.width() + slider.siblings('.coda-nav-left').width() + slider.siblings('.coda-nav-right').width();
+         // ul.parent().css({ width: navContainerWidth });
+			switch (settings.dynamicTabsAlign) {
+				case "center":
+					ul.css({ width: ($("li", ul).width() + 15) * panelCount });
+					break;
+				case "right":
+					ul.css({ float: 'right' });
+					break;
+			};
+		};
+		
+		
+		
+		
+		
 		// Specify the current panel.
 		// If the loaded URL has a hash (cross-linking), we're going to use that hash to give the slider a specific starting position...
-		if (settings.crossLinking && location.hash && parseInt(location.hash.slice(1)) <= panelCount) {
-			var currentPanel = parseInt(location.hash.slice(1));
+		if (settings.crossLinking && location.hash && parseInt(returnSlideID(location.hash.slice(1),$('ul#menu'))) <= panelCount) {
+			var currentPanel = returnSlideID(location.hash.slice(1),$('ul#menu'));
 			var offset = - (panelWidth*(currentPanel - 1));
 			$('.panel-container', slider).css({ marginLeft: offset });
 		// If that's not the case, check to see if we're supposed to load a panel other than Panel 1 initially...
@@ -113,35 +149,6 @@ $.fn.codaSlider = function(settings) {
 			if (settings.crossLinking) { location.hash = currentPanel }; // Change the URL hash (cross-linking)
 			return false;
 		});
-		
-		// If we need a dynamic menu
-		if (settings.dynamicTabs) {
-			var dynamicTabs = '<div class="coda-nav" id="coda-nav-' + sliderCount + '"><ul></ul></div>';
-			switch (settings.dynamicTabsPosition) {
-				case "bottom":
-					slider.parent().append(dynamicTabs);
-					break;
-				default:
-					$('div#layout').append(dynamicTabs);
-					break;
-			};
-			ul = $('#coda-nav-' + sliderCount + ' ul');
-			// Create the nav items
-			$('.panel', slider).each(function(n) {
-            // ul.append('<li class="tab' + (n+1) + '"><a href="#' + (n+1) + '">' + $(this).find(settings.panelTitleSelector).text() + '</a></li>');                                   
-            ul.append('<li class="tab' + (n+1) + '"><a href="#' + $(this).find(settings.panelTitleSelector).text().toLowerCase().replace(" ", "_")  + '">' + $(this).find(settings.panelTitleSelector).text() + '</a></li>');                                  				
-			});
-         // navContainerWidth = slider.width() + slider.siblings('.coda-nav-left').width() + slider.siblings('.coda-nav-right').width();
-         // ul.parent().css({ width: navContainerWidth });
-			switch (settings.dynamicTabsAlign) {
-				case "center":
-					ul.css({ width: ($("li", ul).width() + 15) * panelCount });
-					break;
-				case "right":
-					ul.css({ float: 'right' });
-					break;
-			};
-		};
 			
 		// If we need a tabbed nav
 		$('#coda-nav-' + sliderCount + ' a').each(function(z) {
@@ -163,7 +170,7 @@ $.fn.codaSlider = function(settings) {
 			if (sliderCount == parseInt($(this).attr("rel").slice(12))) {
 				$(this).bind("click", function() {
 					navClicks++;
-					targetPanel = parseInt($(this).attr("href").slice(1));
+					targetPanel = parseInt($(this).attr("class").slice(1));
 					offset = - (panelWidth*(targetPanel - 1));
 					alterPanelHeight(targetPanel - 1);
 					currentPanel = targetPanel;
@@ -177,8 +184,10 @@ $.fn.codaSlider = function(settings) {
 		});
 			
 		// Specify which tab is initially set to "current". Depends on if the loaded URL had a hash or not (cross-linking).
-		if (settings.crossLinking && location.hash && parseInt(location.hash.slice(1)) <= panelCount) {
-			$("#coda-nav-" + sliderCount + " a:eq(" + (location.hash.slice(1) - 1) + ")").addClass("current");
+		if (settings.crossLinking && location.hash && parseInt(returnSlideID(location.hash.slice(1),$('ul#menu'))) <= panelCount) {
+
+			$("#coda-nav-" + sliderCount + " a:eq(" + (parseInt(returnSlideID(location.hash.slice(1),$('ul#menu'))) - 1) + ")").addClass("current");
+			
 		// If there's no cross-linking, check to see if we're supposed to load a panel other than Panel 1 initially...
 		} else if (settings.firstPanelToLoad != 1 && settings.firstPanelToLoad <= panelCount) {
 			$("#coda-nav-" + sliderCount + " a:eq(" + (settings.firstPanelToLoad - 1) + ")").addClass("current");
@@ -232,4 +241,9 @@ $.fn.codaSlider = function(settings) {
 		sliderCount++;
 		
 	});
+	
+	// TO get the id value from hash location
+	function returnSlideID (location, element) {
+	   return element.children('li').find("a."+location).attr('id');
+	}
 };
