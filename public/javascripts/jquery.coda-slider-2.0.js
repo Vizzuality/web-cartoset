@@ -27,7 +27,7 @@ $.fn.codaSlider = function(settings) {
 		dynamicArrowLeftText: "&#171; left",
 		dynamicArrowRightText: "right &#187;",
 		dynamicTabs: true,
-		dynamicTabsAlign: "center",
+		dynamicTabsAlign: "left",
 		dynamicTabsPosition: "top",
 		externalTriggerSelector: "a.xtrig",
 		firstPanelToLoad: 1,
@@ -54,13 +54,10 @@ $.fn.codaSlider = function(settings) {
 		var panelCount = slider.find(".panel").size();
 		var panelContainerWidth = panelWidth*panelCount;
 		var navClicks = 0; // Used if autoSlideStopWhenClicked = true
-		
 		// Surround the collection of panel divs with a container div (wide enough for all panels to be lined up end-to-end)
 		$('.panel', slider).wrapAll('<div class="panel-container"></div>');
 		// Specify the width of the container div (wide enough for all panels to be lined up end-to-end)
 		$(".panel-container", slider).css({ width: panelContainerWidth });
-		
-		
 		
 		
 		// If we need a dynamic menu
@@ -87,20 +84,17 @@ $.fn.codaSlider = function(settings) {
 					ul.css({ width: ($("li", ul).width() + 15) * panelCount });
 					break;
 				case "right":
-					ul.css({ float: 'right' });
+					ul.css({ float: 'left' });
 					break;
 			};
 		};
-		
-		
-		
 		
 		
 		// Specify the current panel.
 		// If the loaded URL has a hash (cross-linking), we're going to use that hash to give the slider a specific starting position...
 		if (settings.crossLinking && location.hash && parseInt(returnSlideID(location.hash.slice(1),$('ul#menu'))) <= panelCount) {
 			var currentPanel = returnSlideID(location.hash.slice(1),$('ul#menu'));
-			var offset = - (panelWidth*(currentPanel - 1));
+		   var offset = - (panelWidth*(currentPanel - 1));
 			$('.panel-container', slider).css({ marginLeft: offset });
 		// If that's not the case, check to see if we're supposed to load a panel other than Panel 1 initially...
 		} else if (settings.firstPanelToLoad != 1 && settings.firstPanelToLoad <= panelCount) { 
@@ -110,8 +104,11 @@ $.fn.codaSlider = function(settings) {
 		// Otherwise, we'll just set the current panel to 1...
 		} else { 
 			var currentPanel = 1;
+			setArrowStyles(currentPanel,panelCount);
 		};
-			
+      // setArrowStyles(currentPanel,panelCount);
+		
+		
 		// Left arrow click
 		$("#coda-nav-left-" + sliderCount + " a").click(function(){
 			navClicks++;
@@ -121,17 +118,16 @@ $.fn.codaSlider = function(settings) {
 				currentPanel = panelCount;
             $('ul#menu').find('a.current').removeClass('current');
             $('ul#menu').find('a#'+	currentPanel).addClass('current');
-            // slider.siblings('.coda-nav').find('a.current').removeClass('current').parents('ul').find('li:last a').addClass('current');
 			} else {
 				currentPanel -= 1;
 				alterPanelHeight(currentPanel - 1);
 				offset = - (panelWidth*(currentPanel - 1));
             $('ul#menu').find('a.current').removeClass('current');
             $('ul#menu').find('a#'+	currentPanel).addClass('current');            				
-            // slider.siblings('.coda-nav').find('a.current').removeClass('current').parent().prev().find('a').addClass('current');
 			};
 			$('.panel-container', slider).animate({ marginLeft: offset }, settings.slideEaseDuration, settings.slideEaseFunction);
 			if (settings.crossLinking) { location.hash = returnSlideName (currentPanel, $('ul#menu')) }; // Change the URL hash (cross-linking)
+         setArrowStyles(currentPanel,panelCount);           
 			return false;
 		});
 			
@@ -144,17 +140,16 @@ $.fn.codaSlider = function(settings) {
 				alterPanelHeight(0);
             $('ul#menu').find('a.current').removeClass('current');
             $('ul#menu').find('a#'+	currentPanel).addClass('current');            				
-            // slider.siblings('.coda-nav').find('a.current').removeClass('current').parents('ul').find('a:eq(0)').addClass('current');
 			} else {
 				offset = - (panelWidth*currentPanel);
 				alterPanelHeight(currentPanel);
 				currentPanel += 1;
             $('ul#menu').find('a.current').removeClass('current');
             $('ul#menu').find('a#'+	currentPanel).addClass('current');            				
-            // slider.siblings('.coda-nav').find('a.current').removeClass('current').parent().next().find('a').addClass('current');
 			};
 			$('.panel-container', slider).animate({ marginLeft: offset }, settings.slideEaseDuration, settings.slideEaseFunction);
 			if (settings.crossLinking) { location.hash = returnSlideName (currentPanel, $('ul#menu')) }; // Change the URL hash (cross-linking)
+         setArrowStyles(currentPanel,panelCount);
 			return false;
 		});
 			
@@ -167,6 +162,7 @@ $.fn.codaSlider = function(settings) {
 				offset = - (panelWidth*z);
 				alterPanelHeight(z);
 				currentPanel = z + 1;
+				setArrowStyles(currentPanel,panelCount);
 				$('.panel-container', slider).animate({ marginLeft: offset }, settings.slideEaseDuration, settings.slideEaseFunction);
 				if (!settings.crossLinking) { return false }; // Don't change the URL hash unless cross-linking is specified
 			});
@@ -182,22 +178,27 @@ $.fn.codaSlider = function(settings) {
 					offset = - (panelWidth*(targetPanel - 1));
 					alterPanelHeight(targetPanel - 1);
 					currentPanel = targetPanel;
+					
+               setArrowStyles(currentPanel,panelCount);
+               
 					// Switch the current tab:
 					slider.siblings('.coda-nav').find('a').removeClass('current').parents('ul').find('li:eq(' + (targetPanel - 1) + ') a').addClass('current');
 					// Slide
 					$('.panel-container', slider).animate({ marginLeft: offset }, settings.slideEaseDuration, settings.slideEaseFunction);
 					if (!settings.crossLinking) { return false }; // Don't change the URL hash unless cross-linking is specified
+               
 				});
 			};
 		});
 			
 		// Specify which tab is initially set to "current". Depends on if the loaded URL had a hash or not (cross-linking).
 		if (settings.crossLinking && location.hash && parseInt(returnSlideID(location.hash.slice(1),$('ul#menu'))) <= panelCount) {
-
+         setArrowStyles(currentPanel,panelCount);
 			$("#coda-nav-" + sliderCount + " a:eq(" + (parseInt(returnSlideID(location.hash.slice(1),$('ul#menu'))) - 1) + ")").addClass("current");
 			
 		// If there's no cross-linking, check to see if we're supposed to load a panel other than Panel 1 initially...
 		} else if (settings.firstPanelToLoad != 1 && settings.firstPanelToLoad <= panelCount) {
+		   setArrowStyles(currentPanel,panelCount);
 			$("#coda-nav-" + sliderCount + " a:eq(" + (settings.firstPanelToLoad - 1) + ")").addClass("current");
 		// Otherwise we must be loading Panel 1, so make the first tab the current one.
 		} else {
@@ -233,6 +234,7 @@ $.fn.codaSlider = function(settings) {
 					var offset = - (panelWidth*currentPanel);
 					currentPanel += 1;
 				};
+				// setArrowStyles(currentPanel,panelCount);
 				alterPanelHeight(currentPanel - 1);
 				// Switch the current tab:
 				slider.siblings('.coda-nav').find('a').removeClass('current').parents('ul').find('li:eq(' + (currentPanel - 1) + ') a').addClass('current');
@@ -259,5 +261,26 @@ $.fn.codaSlider = function(settings) {
 	function returnSlideName (id, element) {
 	   var href = element.children('li').find("a#"+id).attr('href').replace("#", "");
 	   return href;
+	}
+	
+	function setArrowStyles(currentPanel,panelCount){
+      if (currentPanel == 1){
+         $('ul#menu').css('display','none');
+      }else{
+         $('ul#menu').css('display','inline');
+      }
+      
+	   
+	   if (currentPanel == 2) {
+	      $('#coda-nav-left-1').css('display','none');
+	      $('#coda-nav-right-1').css('display','inline');
+	   }else if (currentPanel == panelCount){
+         $('#coda-nav-left-1').css('display','inline');	      
+	      $('#coda-nav-right-1').css('display','none');
+	   }else {
+	      $('#coda-nav-left-1').css('display','inline');
+	      $('#coda-nav-right-1').css('display','inline');
+	   }
+	   
 	}
 };
