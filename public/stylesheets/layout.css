@@ -1,7 +1,7 @@
-body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,form,fieldset,p{margin:0; padding:0; font-weight:normal;}
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,form,fieldset,p{margin:0; padding:0; font-weight:normal; }
 img,fieldset{border:none; padding:0; margin:0;}
 ul,li {list-style:none;}
-body{font:13px Arial, Helvetica,serif; color:#333333; background-color:#F1F5F7;}
+body{font:13px Arial, Helvetica,serif; color:#333333; background:url('/images/bkg.png') repeat right 0 #F1F5F7;} 
 span.clear{clear:both;}
 div.left{float:left; width:auto;}
 div.right{float:right; width:auto;}
@@ -11,18 +11,16 @@ ul:focus {outline:none;}
 input:focus{outline:none}
 
 div#outer_layout{margin:0 auto; width:100%; overflow:hidden;}
-div#layout {width:1080px; margin:0 auto; background-color:#F1F5F7;;}
-
+div#layout {width:820px; margin:0 auto; background-color:#F1F5F7;;}
 
 /*Fixed to screen*/
 span.line {float:left; width:100%; height:3px; background-color:#333333;  z-index:10;}
 a#left_arrow {position:fixed; top:50%; left:20px; width:15px; height:12px; }
 a#right_arrow {position:fixed; top:50%; right:20px; width:15px; height:12px; background:url('/images/nav/right_arrow.png') no-repeat 0 0;}
 
-div#content {position:fixed; top:40%; width:980px; height:100%;}
+div#content {position:fixed; top:40%; width:820px; height:100%;}
 
-h1 {float:left; width:100%; height:143px; font:normal 41px "PT Sans"; line-height:46px; letter-spacing:-1.0px; margin:0; color:#333333;}
-h1 span {font-weight:bold;}
+h1 {float:left; width:100%; height:auto; font:normal 41px "PT Sans"; line-height:46px; letter-spacing:-1.0px; margin:0; color:#333333;}
 h2 {float:left; width:100%; height:143px; font:normal 21px "PT Sans"; line-height:42px; letter-spacing:-1.0px; margin:30px 0 0 0; color:#333333;}
 h2 a {color:#0099CC; text-decoration:underline;}
 h2 a:hover {color:#006080; cursor:pointer;}
@@ -30,59 +28,121 @@ h5.title {display:none;}
 
 /* Most common stuff you'll need to change */
 
-	.coda-slider-wrapper { padding: 20px 0 }
-	.coda-slider { }
-	
-	/* Use this to keep the slider content contained in a box even when JavaScript is disabled */
-	.coda-slider-no-js .coda-slider { height: 100%; overflow: auto !important; padding-right: 20px }
-	
-	/* Change the width of the entire slider (without dynamic arrows) */
-	.coda-slider, .coda-slider .panel { width: 100%;} 
-	
-	/* Change margin and width of the slider (with dynamic arrows) */
-	.coda-slider-wrapper.arrows .coda-slider { width: 100%;}
-	
-	.coda-slider-wrapper.arrows .coda-slider .panel { width: 100%; }
-	.coda-slider-wrapper.arrows .coda-slider { margin: 0 10px }
-	
-	
-	
-	/* Panel padding */
-	.coda-slider .panel-wrapper { padding: 20px; width:1080px; margin:0 auto;}
-	
-	/* Preloader */
-	.coda-slider p.loading { padding: 20px; text-align: center }
+.coda-slider-wrapper { padding: 20px 0 }
+.coda-slider {}
+
+/* Use this to keep the slider content contained in a box even when JavaScript is disabled */
+.coda-slider-no-js .coda-slider { height: 100%; overflow: auto !important; padding-right: 20px }
+
+/* Change the width of the entire slider (without dynamic arrows) */
+.coda-slider, .coda-slider .panel { width: 100%;} 
+
+/* Change margin and width of the slider (with dynamic arrows) */
+.coda-slider-wrapper.arrows .coda-slider { width: 100%;}
+
+.coda-slider-wrapper.arrows .coda-slider .panel { width: 100%; }
+.coda-slider-wrapper.arrows .coda-slider { margin: 0 10px }
+
+
+
+/* Panel padding */
+.coda-slider .panel-wrapper { padding: 20px; width:820px; margin:0 auto;}
+
+/* Preloader */
+.coda-slider p.loading { padding: 20px; text-align: center }
 
 /* Don't change anything below here unless you know what you're doing */
 
-	/* Tabbed nav */
-	.coda-nav {width:1085px!important; position:absolute; z-index:10;}
-	/* Tab nav */
-	.coda-nav ul { width:100%; float:left;}
-	.coda-nav ul li a.current { color:#333333; background-color:#F1F5F7;}
-	.coda-nav ul li { display: inline; }
-	.coda-nav ul li a { color: #999999; font:normal 13px "PT Sans"; text-transform:uppercase; display: block; float: left; margin-right: 10px; padding: 25px 6px 0; text-decoration: none; letter-spacing:-1.0px;}
-	
-	/* Miscellaneous */
-	.coda-slider-wrapper { clear: both; overflow: hidden; width:100%; height:auto!important; }
-	.coda-slider { float: left; overflow: hidden; position: relative; height:100%; }
-	.coda-slider .panel { display: block; float: left }
-	.coda-slider .panel-container { position: relative }
-	
-	.coda-nav-left {position:fixed; top:3px; left:0; width:180px; height:100%; z-index:50;}
-  .coda-nav-left:hover {background-color:#FFFFFF; cursor:pointer;}
-  .coda-nav-right {position:fixed; top:3px; right:0; width:180px; height:100%; z-index:50;}
-  .coda-nav-left a {float:left; background:url('/images/nav/left_arrow.png') no-repeat center center; width:100%; height:100%;}
-  .coda-nav-right a {float:left; background:url('/images/nav/right_arrow.png') no-repeat center center; width:100%; height:100%;}
-  .coda-nav-right:hover {background-color:#FFFFFF; cursor:pointer;}
-	
-  ul#menu {z-index:5;}
-  ul#menu li.tab1 {display:none;}
-  ul#menu li.tab2 {float:left; width:740px !important;}
-  ul#menu li.tab2 a {color:#0A0000; font-size:15px;}
-  
-  div#footer {position:fixed; width:100%; bottom:30px; left:0;}
-  div#footer a {float:left; width:auto; font:normal 13px "PT Sans"; color:#999999;}
-  div#footer a:hover {cursor:pointer; color:#333333;}
-  
-/*  .coda-nav-left a, .coda-nav-right a { display: block; text-align: center; text-decoration: none }*/
+/* Tabbed nav */
+.coda-nav {width:836px!important; position:absolute; z-index:10;}
+/* Tab nav */
+.coda-nav ul { width:100%; float:left;}
+.coda-nav ul li a.current { color:#333333; background-color:#F1F5F7;}
+.coda-nav ul li { display: inline; }
+.coda-nav ul li a { color: #999999; font:normal 13px "PT Sans"; text-transform:uppercase; display: block; float: left; margin-right: 10px; padding: 25px 6px 0; text-decoration: none; letter-spacing:-1.0px;}
+
+/* Miscellaneous */
+.coda-slider-wrapper { clear: both; overflow: hidden; width:100%; height:auto!important; }
+.coda-slider { float: left; overflow: hidden; position: relative; height:100%; }
+.coda-slider .panel { display: block; float: left; }
+.coda-slider .panel-container { position: relative; z-index:10;}
+
+.coda-nav-left {position:fixed; top:3px; left:0; width:180px; height:100%; z-index:100;}
+.coda-nav-left:hover {background-color:#FFFFFF; cursor:pointer;}
+.coda-nav-right {position:fixed; top:3px; right:0; width:180px; height:100%; z-index:100;}
+.coda-nav-left a {float:left; background:url('/images/nav/left_arrow.png') no-repeat 13px center; width:100%; height:100%;}
+.coda-nav-right a {float:left; background:url('/images/nav/right_arrow.png') no-repeat 145px center; width:100%; height:100%;}
+.coda-nav-right:hover {background-color:#FFFFFF; cursor:pointer;}
+
+ul#menu {z-index:5;}
+ul#menu li.tab1 {display:none;}
+ul#menu li.tab2 {float:left; width:515px !important; z-index:100;}
+ul#menu li.tab2 a {color:#0A0000; font-size:15px;}
+
+div.footer {float:left; width:810px; margin:30px 0 0 0; height:auto;}
+div.footer a {float:left; width:auto; font:normal 13px "PT Sans"; color:#999999;}
+div.footer a:hover {cursor:pointer; color:#333333;}
+
+/* CONTENT SLIDE HOME (SLIDE 2) */
+div#slide_home {}
+div#slide_home ul {float:left; width:100%;}
+div#slide_home ul li {float:left; width:230px; margin:0 65px 0 0;}
+div#slide_home ul li.last {margin:0;}
+div#slide_home ul li label.title {float:left; font:normal 25px "PT Sans"; color:#0099CC; width:100%; letter-spacing:-1.0px;}
+div#slide_home ul li p.info {float:left; font:normal 25px "PT Sans"; color:#333333; margin:20px 0 0 0; letter-spacing:-1.0px; line-height:32px;}
+
+
+/*FEATURES*/
+div#slide_features {}
+div#slide_features h3 {float:left; color:#333333; font:normal 37px "PT Sans"; width:820px; letter-spacing:-1.0px; line-height:44px;}
+div#slide_features ul.features {float:left; width:820px; margin:20px 0 0 0;}
+div#slide_features ul.features li {float:left; width:240px; height:105px; margin:35px 49px 0 0;}
+div#slide_features ul.features li.last {margin:35px 0 0 0;}
+div#slide_features ul.features li label {float:left; font:bold 19px "PT Sans"; color:#333333; width:100%; letter-spacing:-1.0px;}
+div#slide_features ul.features li p {float:left; width:256px; font:normal 15px Helvetica,Arial; color:#666666; margin:10px 0 0 0;}
+div#slide_features ul.features li p a {color:#0099CC; text-decoration:underline;}
+div#slide_features ul.features li p a:hover {cursor:pointer; color:#007399;}
+div#slide_features ul.features li ul.suboptions {float:left; margin:6px 0 0 0; padding:0; height:auto;}
+div#slide_features ul.features li ul.suboptions li {float:left; margin:2px 0 0 0; background:url('/images/circle_li.png') no-repeat 0 6px; padding:0 0 0 10px; height:auto;}
+div#slide_features ul.features li ul.suboptions li p {margin:0;}
+
+/*EXAMPLES*/
+div#slide_examples {width:836px;}
+div#slide_examples div#gallery {float:right; width:562px; height:461px; margin:20px 0 0 0; }
+div#slide_examples div#gallery img {width:561px; height:460px;} 
+
+div#slide_examples div.left_column {float:left; width:255px; height:auto;}
+div#slide_examples h3 {float:left; font:bold 20px "PT Sans"; color:#333333; letter-spacing:-1.0px; margin:150px 0 0 0;}
+div#slide_examples div.left_column label.subtitle {float:left; margin:30px 0 0 0; font:normal 17px "PT Sans"; color:#333333;}
+div#slide_examples div.left_column p {float:left; width:228px; font:normal 14px "PT Sans"; color:#666666;}
+div#slide_examples div.left_column p a {font:normal 14px "PT Sans"; color:#0099CC; text-decoration:underline;}
+div#slide_examples div.left_column p a:hover {color:#007399; text-decoration:underline;}
+div#slide_examples div.right_column {float:right; width:600px;}
+
+
+div#slide_download {}
+div#slide_download ul {float:left; width:100%; height:auto; position:relative;}
+div#slide_download ul li {float:left; width:406px; height:auto; margin:0 43px 0 0;}
+div#slide_download ul li p {float:left; font:normal 31px "PT Sans"; color:#333333; letter-spacing:-1.0px; line-height:39px;}
+div#slide_download ul li p a {text-decoration:underline; color:#0099CC; letter-spacing:-1.0px;}
+div#slide_download ul li p a:hover {color:#007399; text-decoration:underline;}
+div#slide_download ul li.last {margin:0; width:370px;}
+div#slide_download div.bottom {float:left; margin:50px 0 0 0; width:100%; height:80px;}
+div#slide_download div.bottom a.download {float:left; width:auto; font:normal 17px "PT Sans"; color:#0099CC; text-decoration:underline; letter-spacing:-1.0px;}
+div#slide_download div.bottom a.download:hover {color:#007399; cursor:pointer;}
+div#slide_download div.bottom span {float:left; width:100%;}
+div#slide_download div.bottom p.github {float:left; font:normal 15px "PT Sans"; color:#A7AAAB; letter-spacing:-1.0px; margin:5px 0 0 0; width:auto;}
+div#slide_download div.bottom span a {float:left; background:url('/images/git_logo.png') no-repeat 0 0; width:42px; height:18px; margin:7px 5px;}
+div#slide_download div.bottom span a:hover {background-position:0 -18px; cursor:pointer;}
+
+/*div#contact_us*/
+div#slide_contact_us {width:830px;}
+div#slide_contact_us p {margin:60px 0 0 0; float:left; width:100%; font:normal 40px "PT Sans"; color:#333333; text-align:center; letter-spacing:-1.0px;}
+div#slide_contact_us p a {color:#0099CC; text-decoration:underline; letter-spacing:-1.0px;}
+div#slide_contact_us p a:hover {color:#007399; text-decoration:underline;}
+
+
+div#slide_home div.footer {margin:250px 0 0 0;}
+div#slide_examples div.footer {margin:100px 0 0 0;}
+div#slide_download div.footer {margin:200px 0 0 0;}
+div#slide_contact_us  div.footer {margin:300px 0 0 0;}

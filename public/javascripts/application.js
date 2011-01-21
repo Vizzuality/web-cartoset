@@ -19,14 +19,21 @@ $(document).ready(function(ev){
   var margin_top = 0;
 
   if(h)
-  {
-     margin_top = h / 2;
-     $('.coda-slider').css('margin-top',margin_top+20);
-  }else {
-     margin_top = document.height / 2; 
-     $('.coda-slider').css('margin-top',margin_top+20);
-  }
+    {
+       margin_top = h / 2;
+       $('.coda-slider').css('margin-top',100);
+    }else {
+       margin_top = document.height / 2; 
+       $('.coda-slider').css('margin-top',100);
+    }
   
-  $('#coda-nav-left-1').css('display','none');
+  // $('#coda-nav-left-1').css('display','none');
+  
+  // Para las galerías de imágenes
+  Galleria.loadTheme('/javascripts/galleria.classic.js');
+  
+  // Initialize Galleria
+  $('div#gallery').galleria({thumbnails:'empty', preload:2,autoplay:5000,transition:'fade',show_counter:'false'});
+  
    
 });

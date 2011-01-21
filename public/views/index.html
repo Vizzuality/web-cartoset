@@ -8,11 +8,15 @@
   
   <script src="/javascripts/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
   <script src="/javascripts/jquery.coda-slider-2.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/javascripts/galleria.js" type="text/javascript" charset="utf-8"></script>  
+  <script src="/javascripts/galleria.classic.js" type="text/javascript" charset="utf-8"></script>    
   <script src="/javascripts/application.js" type="text/javascript" charset="utf-8"></script>  
   
   <link rel="stylesheet" href="/stylesheets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="/stylesheets/layout.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/stylesheets/galleria.classic.css" type="text/css" media="screen" title="no title" charset="utf-8">
 
+  
 
   <title>Cartoset</title>
 
@@ -22,58 +26,134 @@
 
   <div class="outer_layout">
     <span class="line"></span>
-    <div id="layout"></div>
+    <div id="layout">
+    </div>
       
       <div class="coda-slider-wrapper">
       	<div class="coda-slider preload" id="coda-slider-1">
       		<div class="panel">
       			<div class="panel-wrapper">
       				<h5 class="title">Cartoset HOME</h5>
-              <h1><span>At vizzuality we have developed a great tool</span> that allows us* to create beautiful geospatial projects for you in <span>less time</span> and <span>less money</span>.</h1>
-              <h2>*If you are brave enough, you can <a href="#">do it yourself</a></h2>
+              <h1><b>At vizzuality we have developed a great tool</b> that allows us* to create beautiful geospatial projects for you in <b>less time</b> and <b>less money</b>.</h1>
+              <h2>*If you are brave enough, you can <a class="own_link" href="#download">do it yourself</a></h2>
       			</div>
       		</div>
       		<div class="panel">
-      			<div class="panel-wrapper">
+      			<div id="slide_home" class="panel-wrapper">
       				<h5 class="title">Cartoset</h5>
-      				<p>Proin nec turpis eget dolor dictum lacinia. Nullam nunc magna, tincidunt eu porta in, faucibus sed magna. Suspendisse laoreet ornare ullamcorper. Nulla in tortor nibh. Pellentesque sed est vitae odio vestibulum aliquet in nec leo.</p>
-      				
-      				
+              <ul>
+                <li>
+                  <label class="title">What is cartoset?</label>
+                  <p class="info">It’s a new <b>highly customizable geoportal  solution</b> based on open source technologies </p>
+                </li>
+                <li>
+                  <label class="title">Who is it for?</label>
+                  <p class="info"><b>For anybody</b> that needs to publish and curate a geospatial dataset, in a simple and beautiful way</p>
+                </li>
+                <li class="last">
+                  <label class="title">Why is it different?</label>
+                  <p class="info">Because it is <b>extremely flexible</b> so that you can tell your own engaging story.</p>
+                </li>
+              </ul>
+              <div class="footer">
+                  <a href="http://www.vizzuality.com" target="blank">Cartoset is a vizzuality product. 2011</a>
+              </div>
       			</div>
       		</div>
       		<div class="panel">
-      			<div class="panel-wrapper">
+      			<div id="slide_features" class="panel-wrapper">
       				<h5 class="title">Features</h5>
-      				<p>Cras luctus fringilla odio vel hendrerit. Cras pulvinar auctor sollicitudin. Sed lacus quam, sodales sit amet feugiat sit amet, viverra nec augue. Sed enim ipsum, malesuada quis blandit vel, posuere eget erat. Sed a arcu justo. Integer ultricies, nunc at lobortis facilisis, ligula lacus vestibulum quam, id tincidunt sapien arcu in velit. Vestibulum consequat augue et turpis condimentum mollis sed vitae metus. Morbi leo libero, tincidunt lobortis fermentum eget, rhoncus vel sem. Morbi varius viverra velit vel tempus. Morbi enim turpis, facilisis vel volutpat at, condimentum quis erat. Morbi auctor rutrum libero sed placerat. Etiam ipsum velit, eleifend in vehicula eu, tristique a ipsum. Donec vitae quam vel diam iaculis bibendum eget ut diam. Fusce quis interdum diam. Ut urna justo, dapibus a tempus sit amet, bibendum at lectus. Sed venenatis molestie commodo.</p>
+              <h3><b>A lot of features out of the box</b>, and great support to design and develop your own stuff</h3>
+              <ul class="features">
+                <li>
+                  <label>Open source stack. No licenses</label>
+                  <p>GeoPortal uses Ruby On Rails, Refinery and <b>blablabla</b>, a complete open-source framework, free to be used.</p>
+                </li>
+                <li>
+                  <label>Any kind of geospatial objects</label>
+                  <p>Support for points, polygons, multi polygons, lines, polilines, vectorial data layers...</p>
+                </li>
+                <li class="last">
+                  <label>Multiple map providers</label>
+                  <p>GeoPortal supports multiple tile map vendors: Google Maps, OpenStreet Maps, CloudMade, Bing...</p>
+                </li>
+                <li>
+                  <label>Editable geospatial data</label>
+                  <p>You can edit all geospatial data as you wish: point coordinates, drag-n-drop polygonal shape editor, associated metadata...</p>
+                </li>
+                <li>
+                  <label>Friendly, easy-to-use backoffice</label>
+                  <p>Carefully designed, GeoPortal’s backoffice is easy-to-use and highly efficient. <a class="own_link" href="#examples">Check these screenshots</a>.</p>
+                </li>
+                <li class="last">
+                  <label>Fully customizable design</label>
+                  <p>Absolutely all pages and elements in GeoPortal can be easily changed through custom CSSs.</p>
+                </li>
+                <li>
+                  <label>Integrating other geo-API’s</label>
+                  <p>Ready to cross your data with other API’s such Youtube, Panoramio and flickr in just one click</p>
+                </li>
+                <li>
+                  <label>Wikipedia synchronization</label>
+                  <p>Keep the discussion in wikipedia, collaborate with them and avoid moderating content</p>
+                </li>
+                <li class="last">
+                  <label>And more...</label>
+                  <ul class="suboptions">
+                    <li><p>OGC services Add-on</p></li>
+                    <li><p>RSS and GeoRSS support</p></li>
+                    <li><p>External WMS, WMC support</p></li>                                        
+                  </ul>
+                </li>                
+              </ul>
+              <div class="footer">
+                  <a href="http://www.vizzuality.com" target="blank">Cartoset is a vizzuality product. 2011</a>
+              </div>
+              
       			</div>
       		</div>
       		<div class="panel">
-      			<div class="panel-wrapper">
+      			<div id="slide_examples"  class="panel-wrapper">
       				<h5 class="title">Examples</h5>
-      				<p>Nulla ultricies ornare erat, a rutrum lacus varius nec. Pellentesque vehicula lobortis dignissim. Ut scelerisque auctor eros sed porttitor. Nullam pulvinar ultrices malesuada. Quisque lobortis bibendum nisi et condimentum. Mauris quis erat vel dui lobortis dignissim.</p>
+      				
+      				  <h3>Let’s see some examples</h3>
+      				  <div id="gallery">
+      				    <a href="http://methane.ipq.co"><img src="/images/examples/methane.jpg" title="Frozen Heat" alt="One of these sites is Frozen Heat, a website where finding all the information about Methane gas hydrates around the world."></a>      				    
+      				  </div>
+                <div class="footer">
+                    <a href="http://www.vizzuality.com" target="blank">Cartoset is a vizzuality product. 2011</a>
+                </div>
       			</div>
       		</div>
       		<div class="panel">
-      			<div class="panel-wrapper">
+      			<div id="slide_download" class="panel-wrapper">
       				<h5 class="title">Download</h5>
-      				<p>Nulla ultricies ornare erat, a rutrum lacus varius nec. Pellentesque vehicula lobortis dignissim. Ut scelerisque auctor eros sed porttitor. Nullam pulvinar ultrices malesuada. Quisque lobortis bibendum nisi et condimentum. Mauris quis erat vel dui lobortis dignissim.</p>
+
+              <ul>
+                <li><p>CartoSet is <b>open source</b>. You can download it, modify it and use it free of charge.</p></li>
+                <li class="last"><p>...<b>But</b> if you don’t feel like it or you need something tailor made, <a class="own_link" href="#contact_us">we can help you</a>.</p></li>
+              </ul>
+              <div class="bottom">
+                <a class="download" href="https://github.com/Vizzuality/geoportal" class="github">Download and fork the code</a>
+                <span><p class="github">Get it from</p><a href="https://github.com/Vizzuality/geoportal/archives/master"></a></span>
+              </div>
+              <div class="footer">
+                  <a href="http://www.vizzuality.com" target="blank">Cartoset is a vizzuality product. 2011</a>
+              </div>
       			</div>
       		</div>
       		<div class="panel">
-      			<div class="panel-wrapper">
+      			<div id="slide_contact_us" class="panel-wrapper">
       				<h5 class="title">Contact us</h5>
-      				<p>Nulla ultricies ornare erat, a rutrum lacus varius nec. Pellentesque vehicula lobortis dignissim. Ut scelerisque auctor eros sed porttitor. Nullam pulvinar ultrices malesuada. Quisque lobortis bibendum nisi et condimentum. Mauris quis erat vel dui lobortis dignissim.</p>
+              <p>Just <a href="mailto:contact@vizzuality.com">drop us an email</a> and we will back to you soon!</p>
+              <div class="footer">
+                  <a href="http://www.vizzuality.com" target="blank">Cartoset is a vizzuality product. 2011</a>
+              </div>
       			</div>
       		</div>
       	</div><!-- .coda-slider -->
       </div><!-- .coda-slider-wrapper -->
-      
-      
-      
-      <!-- <div id="content"> -->
-      <!-- </div> -->
-      <!-- <a id="right_arrow"></a> -->
-    <!--  </div>  layout -->
+    
   </div> <!-- outer_layout -->
 </body>
 </html>

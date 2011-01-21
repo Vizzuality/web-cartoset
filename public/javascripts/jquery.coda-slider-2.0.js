@@ -16,7 +16,7 @@ var sliderCount = 1;
 $.fn.codaSlider = function(settings) {
 
 	settings = $.extend({
-		autoHeight: true,
+		autoHeight: false,
 		autoHeightEaseDuration: 1000,
 		autoHeightEaseFunction: "easeInOutExpo",
 		autoSlide: false,
@@ -104,10 +104,9 @@ $.fn.codaSlider = function(settings) {
 		// Otherwise, we'll just set the current panel to 1...
 		} else { 
 			var currentPanel = 1;
-			setArrowStyles(currentPanel,panelCount);
+	      setArrowStyles(currentPanel,panelCount);
 		};
       // setArrowStyles(currentPanel,panelCount);
-		
 		
 		// Left arrow click
 		$("#coda-nav-left-" + sliderCount + " a").click(function(){
@@ -167,6 +166,44 @@ $.fn.codaSlider = function(settings) {
 				if (!settings.crossLinking) { return false }; // Don't change the URL hash unless cross-linking is specified
 			});
 		});
+		
+		// If is a own created link
+		$('a.own_link').bind("click", function() {
+			var href = $(this).attr('href');
+         href = href.substring(1,href.length);
+			navClicks++;
+			var z;
+			switch (href) {
+				case "cartoset":
+					z = 1;
+					break;
+				case "features":
+					z = 2;
+					break;
+				case "examples":
+					z = 3;
+					break;
+				case "download":
+					z = 4;
+					break;
+   			case "contact_us":
+   				z = 5;
+   				break;
+				default:
+					z = 1;
+					break;
+			};
+			$('#menu').find('a.current').removeClass('current');
+			$('#menu').find('a.'+href).addClass('current');
+			
+			// $(this).addClass('current').parents('ul').find('a').not($(this)).removeClass('current');
+			offset = - (panelWidth*z);
+			alterPanelHeight(z);
+			currentPanel = z + 1;
+			setArrowStyles(currentPanel,panelCount);
+			$('.panel-container', slider).animate({ marginLeft: offset }, settings.slideEaseDuration, settings.slideEaseFunction);
+		});
+
 		
 		// External triggers (anywhere on the page)
 		$(settings.externalTriggerSelector).each(function() {
@@ -265,22 +302,23 @@ $.fn.codaSlider = function(settings) {
 	
 	function setArrowStyles(currentPanel,panelCount){
       if (currentPanel == 1){
+         $('#coda-nav-left-1').css('display','none');
          $('ul#menu').css('display','none');
       }else{
          $('ul#menu').css('display','inline');
+         
+         if (currentPanel == 2) {
+   	      $('#coda-nav-left-1').css('display','none');
+   	      $('#coda-nav-right-1').css('display','inline');
+   	   }else if (currentPanel == panelCount){
+            $('#coda-nav-left-1').css('display','inline');	      
+   	      $('#coda-nav-right-1').css('display','none');
+   	   }else {
+   	      $('#coda-nav-left-1').css('display','inline');
+   	      $('#coda-nav-right-1').css('display','inline');
+   	   }
       }
-      
-	   
-	   if (currentPanel == 2) {
-	      $('#coda-nav-left-1').css('display','none');
-	      $('#coda-nav-right-1').css('display','inline');
-	   }else if (currentPanel == panelCount){
-         $('#coda-nav-left-1').css('display','inline');	      
-	      $('#coda-nav-right-1').css('display','none');
-	   }else {
-	      $('#coda-nav-left-1').css('display','inline');
-	      $('#coda-nav-right-1').css('display','inline');
-	   }
+      	   
 	   
 	}
 };
