@@ -54,25 +54,37 @@ h5.title {display:none;}
 /* Don't change anything below here unless you know what you're doing */
 
 /* Tabbed nav */
-.coda-nav {width:836px!important; position:absolute; z-index:10;}
+.coda-nav {width:836px!important; position:absolute; z-index:200;}
 /* Tab nav */
 .coda-nav ul { width:100%; float:left;}
 .coda-nav ul li a.current { color:#333333; background-color:#F1F5F7;}
 .coda-nav ul li { display: inline; }
 .coda-nav ul li a { color: #999999; font:normal 13px "PT Sans"; text-transform:uppercase; display: block; float: left; margin-right: 10px; padding: 25px 6px 0; text-decoration: none; letter-spacing:-1.0px;}
-
+.coda-nav ul li a:hover {color:#333333;}
 /* Miscellaneous */
 .coda-slider-wrapper { clear: both; overflow: hidden; width:100%; height:auto!important; }
 .coda-slider { float: left; overflow: hidden; position: relative; height:100%; }
 .coda-slider .panel { display: block; float: left; }
 .coda-slider .panel-container { position: relative; z-index:10;}
 
-.coda-nav-left {position:fixed; top:3px; left:0; width:180px; height:100%; z-index:100;}
-.coda-nav-left:hover {background-color:#FFFFFF; cursor:pointer;}
-.coda-nav-right {position:fixed; top:3px; right:0; width:180px; height:100%; z-index:100;}
-.coda-nav-left a {float:left; background:url('/images/nav/left_arrow.png') no-repeat 13px center; width:100%; height:100%;}
-.coda-nav-right a {float:left; background:url('/images/nav/right_arrow.png') no-repeat 145px center; width:100%; height:100%;}
-.coda-nav-right:hover {background-color:#FFFFFF; cursor:pointer;}
+.coda-nav-left {position:fixed; top:3px; left:0; width:70px; height:100%; z-index:100;}
+.coda-nav-left:hover {background-color:#FFFFFF;}
+.coda-nav-right {position:fixed; top:3px; right:0; width:70px; height:100%; z-index:100;}
+.coda-nav-left a {float:left; background:url('/images/nav/left_arrow.png') no-repeat center center; width:100%; height:100%;}
+.coda-nav-left a:hover {cursor:pointer;}
+.coda-nav-right a {float:left; background:url('/images/nav/right_arrow.png') no-repeat center center; width:100%; height:100%;}
+.coda-nav-right a:hover {cursor:pointer;}
+.coda-nav-right:hover {background-color:#FFFFFF;}
+
+/* This is for create */
+
+div#front_left {position:fixed; top:0; left:70px; height:100%; width:110px; z-index:100;}
+div#front_left:hover {cursor:pointer;}
+div#front_right {position:fixed; top:0; right:70px; height:100%; width:110px; z-index:100;}
+div#front_right:hover {cursor:pointer;}
+div#back_left {position:fixed; top:0; left:0; height:100%; width:180px; background-color:#FFFFFF; display:none;}
+div#back_right {position:fixed; top:0; right:0; height:100%; width:180px; background-color:#FFFFFF; display:none;}
+
 
 ul#menu {z-index:5;}
 ul#menu li.tab1 {display:none;}
@@ -136,7 +148,7 @@ div#slide_download div.bottom span a {float:left; background:url('/images/git_lo
 div#slide_download div.bottom span a:hover {background-position:0 -18px; cursor:pointer;}
 
 /*div#contact_us*/
-div#slide_contact_us {width:830px;}
+div#slide_contact_us {width:850px!important;}
 div#slide_contact_us p {margin:60px 0 0 0; float:left; width:100%; font:normal 40px "PT Sans"; color:#333333; text-align:center; letter-spacing:-1.0px;}
 div#slide_contact_us p a {color:#0099CC; text-decoration:underline; letter-spacing:-1.0px;}
 div#slide_contact_us p a:hover {color:#007399; text-decoration:underline;}

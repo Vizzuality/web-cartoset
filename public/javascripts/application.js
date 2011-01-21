@@ -10,9 +10,7 @@ $(document).ready(function(ev){
            }
    $('#coda-slider-1').codaSlider({
          dynamicArrowLeftText: "",
-         dynamicArrowRightText: ""  });
-   
-   // $('ul#menu').css('display','none');
+         dynamicArrowRightText: ""});
 
    h =  document.body.clientHeight; /* IE only */
 
@@ -35,5 +33,51 @@ $(document).ready(function(ev){
   // Initialize Galleria
   $('div#gallery').galleria({thumbnails:'empty', preload:2,autoplay:5000,transition:'fade',show_counter:'false'});
   
+  
+  // To simulate hover in back (showing other styles) but not really...
+  $('div#front_left').hover(function(ev){
+		$('div#back_left').show();
+	},
+	function(ev){
+		$('div#back_left').hide();
+	});
    
+   $('div#front_right').hover(function(ev){
+		$('div#back_right').show();
+   	},
+   	function(ev){
+         $('div#back_right').hide();
+   	});
+
+   $('.coda-nav-left a').hover(function(ev){
+		$('div#back_left').show();
+   	},
+   	function(ev){
+         $('div#back_left').hide();
+   	});
+
+   $('.coda-nav-right a').hover(function(ev){
+		$('div#back_right').show();
+   	},
+   	function(ev){
+         $('div#back_right').hide();
+   	});
+   	
+      window.onresize = function(event) {
+          w =  document.body.clientWidth; /* IE only */
+         if(w)
+         {
+            $('.panel').width(w);
+         }else {
+            $('.panel').width(document.width);
+         }
+               
+         var panelContainerWidth = w*6;
+         $(".panel-container").width(panelContainerWidth);
+         var currentPanel = $('ul#menu').find('a.current').attr('id');
+         var offset = - (w*(currentPanel - 1));
+         
+         $('.panel-container').css({ marginLeft: offset });
+      }     
+
 });
