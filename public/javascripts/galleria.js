@@ -527,7 +527,7 @@ Galleria = function() {
     // add some elements
     var divs =  'container stage images image-nav image-nav-left image-nav-right ' +
                 'info info-text info-title info-description info-explore info-author ' +
-                'thumbnails thumbnails-list thumbnails-container thumb-nav-left thumb-nav-right ' +
+                'thumbnails thumbnails-list thumbnails-container thumb-nav-left ' +
                 'loader counter tooltip',
         spans = 'current total';
 
@@ -607,6 +607,8 @@ Galleria = function() {
     };
 
     self.$('info-explore').append('Check it out');
+   //  self.$('galleria-image').children('img').css('width','auto');
+   // self.$('galleria-image').children('img').css('height','auto');
     
     // internal carousel object
     var carousel = this._carousel = {
@@ -650,7 +652,7 @@ Galleria = function() {
 
             carousel.max = w;
             carousel.hooks = hooks;
-            carousel.width = self.$( 'thumbnails-list' ).width();
+            // carousel.width = self.$( 'thumbnails-list' ).width();
             carousel.setClasses();
 
             self.$( 'thumbnails-container' ).toggleClass( 'galleria-carousel', w > carousel.width );
@@ -935,7 +937,7 @@ Galleria = function() {
 
             var htmlbody = {
                 height: '100%',
-                overflow: 'hidden',
+                overflow: 'auto',
                 margin:0,
                 padding:0
             };
@@ -1660,7 +1662,7 @@ Galleria.prototype = {
             'thumbnails-list' :
                 ['thumbnails'],
             'thumbnails-container' :
-                ['thumb-nav-left', 'thumbnails-list', 'thumb-nav-right'],
+                ['thumb-nav-left', 'thumbnails-list'],
             'container' :
                 ['stage', 'thumbnails-container', 'info', 'tooltip']
         });
@@ -3508,7 +3510,7 @@ Galleria.Picture = function( id ) {
 
     // add container styles
     $( this.container ).css({
-        overflow: 'hidden',
+        overflow: 'auto',
         position: 'relative' // for IE Standards mode
     });
 
@@ -3547,8 +3549,8 @@ Galleria.Picture.prototype = {
             image.src = src;
             self.loaded = true;
             self.original = {
-                height: image.height,
-                width: image.width
+                height: 'auto',
+                width: 'auto'
             };
             return image;
         }
@@ -3556,8 +3558,8 @@ Galleria.Picture.prototype = {
         // begin preload and insert in cache when done
         image.onload = function() {
             self.original = {
-                height: this.height,
-                width: this.width
+                height: 'auto',
+                width: 'auto'
             };
             self.cache[ src ] = src; // will override old cache
             self.loaded = true;
@@ -3769,10 +3771,12 @@ Galleria.Picture.prototype = {
                 // apply position
                 $( self.image ).css({
                     position : 'relative',
-                    top :  getPosition(pos.top, 'height', height) - options.margin,
-                    left : getPosition(pos.left, 'width', width) - options.margin
+                    top :  0,
+                    left : 0
                 });
-
+                
+                console.log($( self ));
+             
                 // show the image
                 self.show();
 

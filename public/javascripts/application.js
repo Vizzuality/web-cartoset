@@ -1,6 +1,5 @@
 $(document).ready(function(ev){
    
-   
    w =  document.body.clientWidth; /* IE only */
            if(w)
            {
@@ -11,8 +10,18 @@ $(document).ready(function(ev){
    $('#coda-slider-1').codaSlider({
          dynamicArrowLeftText: "",
          dynamicArrowRightText: ""});
-
-   h =  document.body.clientHeight; /* IE only */
+   
+   if ($.browser.msie) {
+            var zIndexNumber = 20;  
+            $('div.panel').each(function() {  
+              $(this).css('zIndex', zIndexNumber);  
+              zIndexNumber -= 10;  
+           });
+           $('div#back_left').css('zIndex', zIndexNumber);  
+           $('div#back_right').css('zIndex', zIndexNumber);  
+      }      
+   
+  h =  document.body.clientHeight; /* IE only */
 
   var margin_top = 0;
 
@@ -24,15 +33,13 @@ $(document).ready(function(ev){
        margin_top = document.height / 2; 
        $('.coda-slider').css('margin-top',100);
     }
-  
-  // $('#coda-nav-left-1').css('display','none');
-  
+    
   // Para las galerías de imágenes
   Galleria.loadTheme('/javascripts/galleria.classic.js');
   
   // Initialize Galleria
-  $('div#gallery').galleria({thumbnails:'empty', preload:2,autoplay:5000,transition:'fade',show_counter:'false'});
-  
+  $('div#gallery').galleria({thumbnails:'empty', preload:2,autoplay:5000,transition:'fade',show_counter:'false',max_scale_ratio:'1'});
+
   
   // To simulate hover in back (showing other styles) but not really...
   $('div#front_left').hover(function(ev){
@@ -61,7 +68,7 @@ $(document).ready(function(ev){
    	},
    	function(ev){
          $('div#back_right').hide();
-   	});
+   	});	
    	
       window.onresize = function(event) {
           w =  document.body.clientWidth; /* IE only */

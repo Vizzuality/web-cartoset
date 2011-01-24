@@ -6,13 +6,16 @@
  
 .galleria-container {
     position: relative;
+    width:578px;
 /*    overflow: hidden;*/
-    background: #000;
+/*    background: #000;*/
 }
 .galleria-container img {
     -moz-user-select: none;
     -webkit-user-select: none;
     -o-user-select: none;
+    width:auto;
+    height:auto;
 }
 .galleria-stage {
     position: absolute;
@@ -20,13 +23,13 @@
     bottom: 0;
     left: 0;
     right: 0;
-    overflow:hidden;
+    overflow:auto;
 }
 .galleria-thumbnails-container {
     height: 50px;
-    bottom: 80px;
+    top: 46px;
     position: absolute;
-    left: -277px;
+    left: -305px;
     right: 10px;
     z-index: 2;
 }
@@ -70,7 +73,7 @@
 }
 .galleria-info {
     width: 50%;
-    top: 165px;
+    top: 130px;
     left: -287px;
     z-index: 2;
     position: absolute;
@@ -82,7 +85,7 @@
 }
 
 .galleria-info-title {
-    font:normal 17px "PT Sans"; color:#333333;
+    font:bold 17px "PT Sans"; color:#333333;
     margin: 0;
 }
 
@@ -175,6 +178,7 @@
     filter: alpha(opacity=80);
 }
 .galleria-thumb-nav-right {
+   display:none;  
     background-position: -578px 5px;
     border-right: none;
     right: 0;
@@ -209,3 +213,5 @@
     background-image: url('/images/galleria/classic-map.png');
     background-repeat: no-repeat;
 }
+
+.galleria-image {width:800px;}

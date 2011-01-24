@@ -96,12 +96,12 @@ $.fn.codaSlider = function(settings) {
 		// If the loaded URL has a hash (cross-linking), we're going to use that hash to give the slider a specific starting position...
 		if (settings.crossLinking && window.location.hash && parseInt(returnSlideID(window.location.hash.slice(1),$('ul#menu'))) <= panelCount) {
 			var currentPanel = returnSlideID(window.location.hash.slice(1),$('ul#menu'));
-		   var offset = - (panelWidth*(currentPanel - 1));
+		   var offset = - (panelWidth*(parseInt(currentPanel) - 1));
 			$('.panel-container', slider).css({ marginLeft: offset });
 		// If that's not the case, check to see if we're supposed to load a panel other than Panel 1 initially...
 		} else if (settings.firstPanelToLoad != 1 && settings.firstPanelToLoad <= panelCount) { 
 			var currentPanel = settings.firstPanelToLoad;
-			var offset = - (panelWidth*(currentPanel - 1));
+			var offset = - (panelWidth*(parseInt(currentPanel) - 1));
 			$('.panel-container', slider).css({ marginLeft: offset });
 		// Otherwise, we'll just set the current panel to 1...
 		} else { 
@@ -124,17 +124,69 @@ $.fn.codaSlider = function(settings) {
             $('ul#menu').find('a.current').removeClass('current');
             $('ul#menu').find('a#'+	currentPanel).addClass('current');
 			} else {
-				currentPanel -= 1;
-				alterPanelHeight(currentPanel - 1);
-				offset = - (panelWidth*(currentPanel - 1));
+			   currentPanel = parseInt(currentPanel) - 1;
+				alterPanelHeight(parseInt(currentPanel) - 1);
+				offset = - (panelWidth*(parseInt(currentPanel) - 1));
             $('ul#menu').find('a.current').removeClass('current');
             $('ul#menu').find('a#'+	currentPanel).addClass('current');            				
 			};
 			$('.panel-container', slider).animate({ marginLeft: offset }, settings.slideEaseDuration, settings.slideEaseFunction);
+
 			if (settings.crossLinking) { window.location.hash = returnSlideName (currentPanel, $('ul#menu')) }; // Change the URL hash (cross-linking)
          setArrowStyles(currentPanel,panelCount);           
 			return false;
 		});
+		
+		$('div#front_left').click(function(ev){
+         panelWidth = slider.find(".panel").width();
+   		panelCount = slider.find(".panel").size();
+   		panelContainerWidth = panelWidth*panelCount;
+   		
+			navClicks++;
+			if (currentPanel == 1) {
+				offset = - (panelWidth*(panelCount - 1));
+				alterPanelHeight(panelCount - 1);
+				currentPanel = panelCount;
+            $('ul#menu').find('a.current').removeClass('current');
+            $('ul#menu').find('a#'+	currentPanel).addClass('current');
+			} else {
+			   currentPanel = parseInt(currentPanel) - 1;
+				alterPanelHeight(parseInt(currentPanel) - 1);
+				offset = - (panelWidth*(parseInt(currentPanel) - 1));
+            $('ul#menu').find('a.current').removeClass('current');
+            $('ul#menu').find('a#'+	currentPanel).addClass('current');            				
+			};
+			$('.panel-container', slider).animate({ marginLeft: offset }, settings.slideEaseDuration, settings.slideEaseFunction);
+
+			if (settings.crossLinking) { window.location.hash = returnSlideName (currentPanel, $('ul#menu')) }; // Change the URL hash (cross-linking)
+         setArrowStyles(currentPanel,panelCount);           
+			return false;
+      });
+      $('div#front_right').click(function(ev){
+         panelWidth = slider.find(".panel").width();
+     		panelCount = slider.find(".panel").size();
+     		panelContainerWidth = panelWidth*panelCount;
+
+  			navClicks++;
+  			if (currentPanel == panelCount) {
+  				offset = 0;
+  				currentPanel = 1;
+  				alterPanelHeight(0);
+              $('ul#menu').find('a.current').removeClass('current');
+              $('ul#menu').find('a#'+	currentPanel).addClass('current');            				
+  			} else {
+  				offset = - (panelWidth*currentPanel);
+  				alterPanelHeight(currentPanel);
+  				currentPanel = parseInt(currentPanel) + 1;
+              $('ul#menu').find('a.current').removeClass('current');
+              $('ul#menu').find('a#'+	currentPanel).addClass('current');            				
+  			};
+  			$('.panel-container', slider).animate({ marginLeft: offset }, settings.slideEaseDuration, settings.slideEaseFunction);
+  			if (settings.crossLinking) { window.location.hash = returnSlideName (currentPanel, $('ul#menu')) }; // Change the URL hash (cross-linking)
+           setArrowStyles(currentPanel,panelCount);
+  			return false;   
+      });
+      
 			
 		// Right arrow click
 		$('#coda-nav-right-' + sliderCount + ' a').click(function(){
@@ -152,7 +204,7 @@ $.fn.codaSlider = function(settings) {
 			} else {
 				offset = - (panelWidth*currentPanel);
 				alterPanelHeight(currentPanel);
-				currentPanel += 1;
+				currentPanel = parseInt(currentPanel) + 1;
             $('ul#menu').find('a.current').removeClass('current');
             $('ul#menu').find('a#'+	currentPanel).addClass('current');            				
 			};
@@ -315,8 +367,19 @@ $.fn.codaSlider = function(settings) {
 	
 	// Rreturn slide's name by id
 	function returnSlideName (id, element) {
+	   var href;
 	   
-	   var href = element.children('li').find("a#"+id).attr('href').replace("#", "");
+	   var element = element.children('li');
+
+	   if (element != undefined){
+	      element = element.find("a#"+id);
+	      
+	      if (element != undefined){
+	         href = element.attr('href');
+
+	         href = href.replace("#", "");      
+	      }
+	   }
 	   return href;
 	}
 	

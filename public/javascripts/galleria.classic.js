@@ -23,7 +23,7 @@ Galleria.addTheme({
     init: function(options) {
         
         // cache some stuff
-        var toggle   = this.$('image-nav-left,image-nav-right,counter'),
+        var toggle   = this.$('counter'),
             info     = this.$('info-explore,info-close,info-text'),
             click    = Galleria.TOUCH ? 'touchstart' : 'click';
         
@@ -40,8 +40,8 @@ Galleria.addTheme({
                 $(this).not('.active').children().stop().fadeTo(400, .6);
             });
             
-            this.addIdleState( this.get('image-nav-left'), { left:-50 });
-            this.addIdleState( this.get('image-nav-right'), { right:-50 });
+            // this.addIdleState( this.get('image-nav-left'), { left:-50 });
+            // this.addIdleState( this.get('image-nav-right'), { right:-50 });
             this.addIdleState( this.get('counter'), { opacity:0 });
         }
         

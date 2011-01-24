@@ -1,7 +1,7 @@
 body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,form,fieldset,p{margin:0; padding:0; font-weight:normal; }
 img,fieldset{border:none; padding:0; margin:0;}
 ul,li {list-style:none;}
-body{font:13px Arial, Helvetica,serif; color:#333333; background:url('/images/bkg.png') repeat right 0 #F1F5F7;} 
+body{font:13px Arial, Helvetica,serif; color:#333333; background:url('/images/bkg.jpg') repeat right 0;} 
 span.clear{clear:both;}
 div.left{float:left; width:auto;}
 div.right{float:right; width:auto;}
@@ -42,7 +42,6 @@ h5.title {display:none;}
 
 .coda-slider-wrapper.arrows .coda-slider .panel { width: 100%; }
 .coda-slider-wrapper.arrows .coda-slider { margin: 0 10px }
-
 
 
 /* Panel padding */
@@ -89,12 +88,12 @@ h5.title {display:none;}
 
 /* This is for create */
 
-div#front_left {position:fixed; top:0; left:70px; height:100%; width:110px; z-index:100;}
+div#front_left {position:fixed; top:3px; left:70px; height:100%; width:110px; z-index:100;}
 div#front_left:hover {cursor:pointer;}
-div#front_right {position:fixed; top:0; right:70px; height:100%; width:110px; z-index:100;}
+div#front_right {position:fixed; top:3px; right:70px; height:100%; width:110px; z-index:100;}
 div#front_right:hover {cursor:pointer;}
-div#back_left {position:fixed; top:0; left:0; height:100%; width:180px; background-color:#FFFFFF; display:none;}
-div#back_right {position:fixed; top:0; right:0; height:100%; width:180px; background-color:#FFFFFF; display:none;}
+div#back_left {position:fixed; top:3px; left:0; height:100%; width:180px; background-color:#FFFFFF; display:none;}
+div#back_right {position:fixed; top:3px; right:0; height:100%; width:180px; background-color:#FFFFFF; display:none;}
 
 
 ul#menu {z-index:5;}
@@ -102,7 +101,7 @@ ul#menu li.tab1 {display:none;}
 ul#menu li.tab2 {float:left; width:510px !important; z-index:100;}
 ul#menu li.tab2 a {color:#0A0000; font-size:15px;}
 
-div.footer {float:left; width:810px; margin:30px 0 0 0; height:auto;}
+div.footer {position:absolute; top:700px; width:810px; margin:30px 0 0 0; height:auto;}
 div.footer a {float:left; width:auto; font:normal 13px "PT Sans"; color:#999999;}
 div.footer a:hover {cursor:pointer; color:#333333;}
 
@@ -131,11 +130,13 @@ div#slide_features ul.features li ul.suboptions li p {margin:0;}
 
 /*EXAMPLES*/
 div#slide_examples {width:836px;}
-div#slide_examples div#gallery {float:right; width:562px; height:461px; margin:20px 0 0 0; }
-div#slide_examples div#gallery img {width:561px; height:460px;} 
+div#slide_examples div.content_gallery {position:relative; width:562px; height:485px; float:right; margin:20px 0 0 0;}
+div#slide_examples div.content_gallery span.top_window {position:absolute; top:0; left:0; width:562px; height:24px; background:url('/images/examples/top_window.png') no-repeat 0 0;}
+div#slide_examples div#gallery {float:right; width:562px; height:461px; margin:23px 0 0 0;}
+div#slide_examples div#gallery img {width:562px; height:auto;/*width:562px; height:461px;*/} 
 
 div#slide_examples div.left_column {float:left; width:255px; height:auto;}
-div#slide_examples h3 {float:left; font:bold 20px "PT Sans"; color:#333333; letter-spacing:-1.0px; margin:150px 0 0 0;}
+div#slide_examples h3 {float:left; font:bold 20px "PT Sans"; color:#333333; letter-spacing:-1.0px; margin:45px 0 0 0;}
 div#slide_examples div.left_column label.subtitle {float:left; margin:30px 0 0 0; font:normal 17px "PT Sans"; color:#333333;}
 div#slide_examples div.left_column p {float:left; width:228px; font:normal 14px "PT Sans"; color:#666666;}
 div#slide_examples div.left_column p a {font:normal 14px "PT Sans"; color:#0099CC; text-decoration:underline;}
@@ -164,8 +165,8 @@ div#slide_contact_us p {margin:60px 0 0 0; float:left; width:100%; font:normal 4
 div#slide_contact_us p a {color:#0099CC; text-decoration:underline; letter-spacing:-1.0px;}
 div#slide_contact_us p a:hover {color:#007399; text-decoration:underline;}
 
-
+div#slide_features div.footer {margin:36px 0 0 0;}
 div#slide_home div.footer {margin:352px 0 0 0;}
-div#slide_examples div.footer {margin:90px 0 0 0;}
-div#slide_download div.footer {margin:200px 0 0 0;}
-div#slide_contact_us  div.footer {margin:300px 0 0 0;}
+div#slide_examples div.footer {margin:83px 0 0 0;}
+div#slide_download div.footer {margin:318px 0 0 0;}
+div#slide_contact_us  div.footer {margin:450px 0 0 0;}
