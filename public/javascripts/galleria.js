@@ -526,7 +526,7 @@ Galleria = function() {
 
     // add some elements
     var divs =  'container stage images image-nav image-nav-left image-nav-right ' +
-                'info info-text info-title info-description info-author ' +
+                'info info-text info-title info-description info-explore info-author ' +
                 'thumbnails thumbnails-list thumbnails-container thumb-nav-left thumb-nav-right ' +
                 'loader counter tooltip',
         spans = 'current total';
@@ -606,10 +606,13 @@ Galleria = function() {
         }
     };
 
+    self.$('info-explore').append('Check it out');
+    
     // internal carousel object
     var carousel = this._carousel = {
 
         // shortcuts
+        explore: self.$('info-explore'),
         next: self.$('thumb-nav-right'),
         prev: self.$('thumb-nav-left'),
 
@@ -631,7 +634,7 @@ Galleria = function() {
             var w = 0,
                 h = 0,
                 hooks = [0];
-
+            
             $.each( self._thumbnails, function( i, thumb ) {
                 if ( thumb.ready ) {
                     w += thumb.outerWidth || $( thumb.container ).outerWidth( true );
@@ -1573,6 +1576,10 @@ Galleria.prototype = {
                     self.next();
                 });
             }
+            // BIND CLICK ACTION ON EXPLORE BUTTON
+            this.$( 'info-explore' ).bind( CLICK(), function(e) {
+                window.location.href = self._data[self._active].link;
+            });
 
             // bind carousel nav
             if ( this._options.carousel ) {
@@ -1643,7 +1650,7 @@ Galleria.prototype = {
         // build the gallery frame
         this.append({
             'info-text' :
-                ['info-title', 'info-description', 'info-author'],
+                ['info-title', 'info-description', 'info-author','info-explore'],
             'info' :
                 ['info-text'],
             'image-nav' :
@@ -2027,6 +2034,8 @@ Galleria.prototype = {
             }, data, config( img ) ) );
 
         });
+        
+        
         // trigger the DATA event and return
         if ( this.getDataLength() ) {
             this.trigger( Galleria.DATA );

@@ -22,15 +22,9 @@ Galleria.addTheme({
     },
     init: function(options) {
         
-        // add some elements
-        this.addElement('info-link','info-close');
-        this.append({
-            'info' : ['info-link','info-close']
-        });
-        
         // cache some stuff
         var toggle   = this.$('image-nav-left,image-nav-right,counter'),
-            info     = this.$('info-link,info-close,info-text'),
+            info     = this.$('info-explore,info-close,info-text'),
             click    = Galleria.TOUCH ? 'touchstart' : 'click';
         
         // show loader & counter with opacity
@@ -52,11 +46,11 @@ Galleria.addTheme({
         }
         
         // toggle info
-        if ( options._toggle_info ) {
-            info.bind( click, function() {
-                info.toggle();
-            });
-        }
+        // if ( options._toggle_info ) {
+        //     info.bind( click, function() {
+        //         info.toggle();
+        //     });
+        // }
         
         // bind some stuff
         this.bind(Galleria.THUMBNAIL, function(e) {
@@ -68,7 +62,7 @@ Galleria.addTheme({
                 this.$('loader').show().fadeTo(200, .4);
             }
             
-            this.$('info').toggle( this.hasInfo() );
+            // this.$('info').toggle( this.hasInfo() );
             
             $(e.thumbTarget).css('opacity',1).parent().siblings().children().css('opacity',.6);
         });

@@ -315,6 +315,7 @@ $.fn.codaSlider = function(settings) {
 	
 	// Rreturn slide's name by id
 	function returnSlideName (id, element) {
+	   
 	   var href = element.children('li').find("a#"+id).attr('href').replace("#", "");
 	   return href;
 	}
@@ -325,7 +326,7 @@ $.fn.codaSlider = function(settings) {
          $('ul#menu').css('display','none');
          $('div#front_left').hide();
       }else{
-         $('ul#menu').css('display','inline');
+         $('ul#menu').fadeIn();
          
          if (currentPanel == 2) {
             $('div#front_left').hide();
