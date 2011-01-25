@@ -26,6 +26,12 @@ h2 a {color:#0099CC; text-decoration:underline;}
 h2 a:hover {color:#006080; cursor:pointer;}
 h5.title {display:none;}
 
+
+
+/*The next is neccesary to fix properly the content scrollable*/
+div.wrapper {float:left; margin:0; padding:0;}
+
+
 /* Most common stuff you'll need to change */
 
 .coda-slider-wrapper { padding: 20px 0 }
@@ -133,6 +139,7 @@ div#slide_examples {width:836px;}
 div#slide_examples div.content_gallery {position:relative; width:562px; height:485px; float:right; margin:20px 0 0 0;}
 div#slide_examples div.content_gallery span.top_window {position:absolute; top:0; left:0; width:562px; height:24px; background:url('/images/examples/top_window.png') no-repeat 0 0;}
 div#slide_examples div#gallery {float:right; width:562px; height:461px; margin:23px 0 0 0;}
+div#slide_examples div#gallery div.all_content {float:left; width:562px; height:461px; }
 div#slide_examples div#gallery img {width:562px; height:auto;/*width:562px; height:461px;*/} 
 
 div#slide_examples div.left_column {float:left; width:255px; height:auto;}

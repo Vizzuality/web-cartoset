@@ -607,8 +607,8 @@ Galleria = function() {
     };
 
     self.$('info-explore').append('Check it out');
-   //  self.$('galleria-image').children('img').css('width','auto');
-   // self.$('galleria-image').children('img').css('height','auto');
+    
+    
     
     // internal carousel object
     var carousel = this._carousel = {
@@ -656,8 +656,7 @@ Galleria = function() {
             carousel.setClasses();
 
             self.$( 'thumbnails-container' ).toggleClass( 'galleria-carousel', w > carousel.width );
-
-            // todo: fix so the carousel moves to the left
+            
         },
 
         bindControls: function() {
@@ -1565,7 +1564,7 @@ Galleria.prototype = {
         var one = false;
 
         this.bind( Galleria.READY, function() {
-
+           
             // show counter
             Utils.show( this.get('counter') );
 
@@ -1576,6 +1575,7 @@ Galleria.prototype = {
                 });
                 this.$( 'stage' ).css({ cursor : 'pointer' }).bind( CLICK(), function(e) {
                     self.next();
+
                 });
             }
             // BIND CLICK ACTION ON EXPLORE BUTTON
@@ -3684,7 +3684,23 @@ Galleria.Picture.prototype = {
             height,
             self = this,
             $container = $( self.container );
+            
+            if ($container.height() > 461){
+               var image = $container.children('img');
+               $container.children('img').remove();               
+               $container.append('<div class="wrapper"></div');
+                              
+               $container.children('div.wrapper').append('<div class="all_content scroll_pane"></div>')
+               $container.children('div.wrapper').children('div.all_content').append(image);
 
+               // Scrollbar when is neccessary (view gallery)
+               $('.scroll_pane').jScrollPane({
+                                    autoReinitialise:false, 
+                                    showArrows: true,
+                              			verticalGutter: 2});
+               
+            }
+            
         // wait for the width/height
         Utils.wait({
             until: function() {
@@ -3774,8 +3790,6 @@ Galleria.Picture.prototype = {
                     top :  0,
                     left : 0
                 });
-                
-                console.log($( self ));
              
                 // show the image
                 self.show();

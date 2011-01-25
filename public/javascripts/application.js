@@ -10,6 +10,7 @@ $(document).ready(function(ev){
    $('#coda-slider-1').codaSlider({
          dynamicArrowLeftText: "",
          dynamicArrowRightText: ""});
+
    
    if ($.browser.msie) {
             var zIndexNumber = 20;  
@@ -22,7 +23,8 @@ $(document).ready(function(ev){
       }      
    
   h =  document.body.clientHeight; /* IE only */
-
+  
+  
   var margin_top = 0;
 
   if(h)
@@ -39,7 +41,7 @@ $(document).ready(function(ev){
   
   // Initialize Galleria
   $('div#gallery').galleria({thumbnails:'empty', preload:2,autoplay:5000,transition:'fade',show_counter:'false',max_scale_ratio:'1'});
-
+  
   
   // To simulate hover in back (showing other styles) but not really...
   $('div#front_left').hover(function(ev){
