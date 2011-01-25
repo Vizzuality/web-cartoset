@@ -75,7 +75,7 @@
     width: 50%;
     top: 130px;
     left: -275px;
-    z-index: 2;
+    z-index: 300;
     position: absolute;
 }
 .galleria-info-text {
@@ -89,7 +89,7 @@
     margin: 0;
 }
 
-.galleria-info-explore {font:normal 14px "PT Sans"; color:#0099CC; position:absolute; bottom:-25px; left:12px; text-decoration:underline;}
+.galleria-info-explore {font:normal 14px "PT Sans"; color:#0099CC; position:absolute; bottom:-25px; left:12px; text-decoration:underline; z-index:100;}
 .galleria-info-explore:hover {color:#006080; cursor:pointer;}
 
 .galleria-info-description {

@@ -74,13 +74,13 @@ div.wrapper {float:left; margin:0; padding:0; }
 
 /* BEFORE */
 .coda-nav-left {position:fixed; top:3px; left:0; width:70px; height:100%; z-index:100;}
-.coda-nav-left:hover {background-color:#FFFFFF;}
+.coda-nav-left:hover {}
 .coda-nav-right {position:fixed; top:3px; right:0; width:70px; height:100%; z-index:100;}
 .coda-nav-left a {float:left; background:url('/images/nav/left_arrow.png') no-repeat center center; width:100%; height:100%;}
 .coda-nav-left a:hover {cursor:pointer;}
 .coda-nav-right a {float:left; background:url('/images/nav/right_arrow.png') no-repeat center center; width:100%; height:100%;}
 .coda-nav-right a:hover {cursor:pointer;}
-.coda-nav-right:hover {background-color:#FFFFFF;}
+.coda-nav-right:hover {}
 
 
 /* AFTER */
@@ -94,9 +94,9 @@ div.wrapper {float:left; margin:0; padding:0; }
 
 /* This is for create */
 
-div#front_left {position:fixed; top:3px; left:70px; height:100%; width:110px; z-index:100;}
+div#front_left {position:fixed; top:3px; left:70px; height:100%; width:110px; z-index:9;}
 div#front_left:hover {cursor:pointer;}
-div#front_right {position:fixed; top:3px; right:70px; height:100%; width:110px; z-index:100;}
+div#front_right {position:fixed; top:3px; right:70px; height:100%; width:110px; z-index:9;}
 div#front_right:hover {cursor:pointer;}
 div#back_left {position:fixed; top:3px; left:0; height:100%; width:180px; background-color:#FFFFFF; display:none;}
 div#back_right {position:fixed; top:3px; right:0; height:100%; width:180px; background-color:#FFFFFF; display:none;}
