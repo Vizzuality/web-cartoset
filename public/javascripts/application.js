@@ -85,9 +85,24 @@ $(document).ready(function(ev){
 });
 
 function setMarginTop(){
-   var documentHeight = self.innerHeight / 2;
+   var documentHeightCenter; 
+
+   if (self.innerHeight) {
+
+      documentHeightCenter = self.innerHeight / 2;
+
+   // Explorer 6 Strict Mode
+   } else if (document.documentElement
+   && document.documentElement.clientHeight) {
+      documentHeightCenter = document.documentElement.clientHeight / 2;
+
+   // other Explorers
+   } else if (document.body) {
+      documentHeightCenter = document.body.clientHeight / 2;
+   }
    
-   var margin_top = documentHeight - 200;
+   
+   var margin_top = documentHeightCenter - 200;
    if (margin_top < 150) margin_top = 150;
    
    // console.log(parseInt(margin_top) - 50);
