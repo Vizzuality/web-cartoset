@@ -7,6 +7,7 @@ $(document).ready(function(ev){
            }else {
               $('.panel').width(document.width);
            }
+           
    $('#coda-slider-1').codaSlider({
          dynamicArrowLeftText: "",
          dynamicArrowRightText: ""});
@@ -23,25 +24,14 @@ $(document).ready(function(ev){
       }      
    
   h =  document.body.clientHeight; /* IE only */
-  
-  
-  var margin_top = 0;
-
-  if(h)
-    {
-       margin_top = h / 2;
-       $('.coda-slider').css('margin-top',100);
-    }else {
-       margin_top = document.height / 2; 
-       $('.coda-slider').css('margin-top',100);
-    }
+   
+  setMarginTop();
     
   // Para las galerías de imágenes
   Galleria.loadTheme('/javascripts/galleria.classic.js');
   
   // Initialize Galleria
   $('div#gallery').galleria({thumbnails:'empty', preload:2,autoplay:5000,transition:'fade',show_counter:'false',max_scale_ratio:'1'});
-  
   
   // To simulate hover in back (showing other styles) but not really...
   $('div#front_left').hover(function(ev){
@@ -74,6 +64,8 @@ $(document).ready(function(ev){
    	
       window.onresize = function(event) {
           w =  document.body.clientWidth; /* IE only */
+          h =  document.body.clientHeight; /* IE only */
+          
          if(w)
          {
             $('.panel').width(w);
@@ -87,6 +79,29 @@ $(document).ready(function(ev){
          var offset = - (w*(currentPanel - 1));
          
          $('.panel-container').css({ marginLeft: offset });
+         setMarginTop();
       }     
 
 });
+
+function setMarginTop(){
+   var documentHeight = self.innerHeight / 2;
+   
+   var margin_top = documentHeight - 200;
+   if (margin_top < 150) margin_top = 150;
+   
+   // console.log(parseInt(margin_top) - 50);
+   
+   $('div#home_index').parent().css('margin-top',margin_top+20);   
+   
+   $('div#slide_home').parent().css('margin-top',parseInt(margin_top)-20);            
+   $('div#slide_features').parent().css('margin-top',parseInt(margin_top) - 80);            
+   $('div#slide_examples').parent().css('margin-top',parseInt(margin_top) - 120);
+   $('div#slide_download').parent().css('margin-top',parseInt(margin_top)+20);   
+   $('div#slide_contact_us').parent().css('margin-top',parseInt(margin_top));      
+   
+   
+
+   
+   
+}

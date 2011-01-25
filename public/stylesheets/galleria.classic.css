@@ -29,7 +29,7 @@
     height: 50px;
     top: 46px;
     position: absolute;
-    left: -305px;
+    left: -294px;
     right: 10px;
     z-index: 2;
 }
@@ -74,7 +74,7 @@
 .galleria-info {
     width: 50%;
     top: 130px;
-    left: -287px;
+    left: -275px;
     z-index: 2;
     position: absolute;
 }
